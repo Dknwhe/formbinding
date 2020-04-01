@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.css}">
+
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+
+    <form th:fragment="search-email" th:action="@{users/}" method="get">
+        <input type="hidden" id="type" name="type" value="email" />
+        <div class="form-group">
+            <label>Search by email</label>
+            <input type="text" class="form-control" id="value" name="value" placeholder="Search by email"/>
+        </div>
+        <button type="submit">Search</button>
+    </form>
+
+</body>
+</html>

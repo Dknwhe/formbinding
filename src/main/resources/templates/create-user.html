@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyemelaf.org">
+<head>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.css}">
+
+    <meta charset="UTF-8">
+    <title>User Form</title>
+</head>
+<body>
+    <div class="container">
+
+        <form th:action="@{/users/process}" method="post" th:object="${form}">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input class="form-control" type="email" id="email" th:field="*{email}">
+            </div>
+
+    <div th:if="${#fields.hasErrors('email')}">
+        <ul>
+            <li th:each="err : ${#fields.error('email')}">
+                <span th:text="${err}"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input class="form-control" type="text" id="firstName" th:field="*{firstName}">
+    </div>
+    <div th:if="${#fields.hasErrors('firstName')}">
+        <ul>
+            <li th:each="err : ${#fields.errors('firstName')}">
+                <span th:text="${err}"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input class="form-control" type="text" id="lastName" th:field="*{lastName}">
+    </div>
+    <div th:if="${#fields.hasErrors('lastName')}">
+        <ul>
+            <li th:each="err : ${#fields.errors('lastName')}">
+                <span th:text="${err}"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" id="password" th:field="*{password}">
+    </div>
+    <div th:if="${#fields.hasErrors('password')}">
+        <ul>
+            <li th:each="err : ${#fields.errors('password')}">
+                <span th:text="${err}"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="form-group">
+        <label for="passwordConfirm">Confirm your password</label>
+        <input class="form-control" type="password" id="passwordConfirm" th:field="*{passwordConfirm}">
+    </div>
+    <div th:if="${#fields.hasErrors('passwordConfirm')}">
+        <ul>
+            <li th:each="err : ${#fields.errors('passwordConfirm')}">
+                <span th:text="${err}"></span>
+            </li>
+        </ul>
+    </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</body>
+</html>
